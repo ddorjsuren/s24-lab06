@@ -15,6 +15,7 @@ on:
     branches: [ "main" ]
 
 jobs:
+
   build:
   
     runs-on: ubuntu-latest
@@ -29,6 +30,14 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    - name: Install local JAR
+      run: |
+        mvn install:install-file \
+          -Dfile=Java/lib/SortedIntLists.jar \
+          -DgroupId=SortedIntLists \
+          -DartifactId=SortedIntLists \
+          -Dversion=1.0 \
+          -Dpackaging=jar
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Run the Maven tests
