@@ -45,7 +45,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory:Java
+        working-directory: Java
     steps:
       - uses: actions/checkout@v4
 
